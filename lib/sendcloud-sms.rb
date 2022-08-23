@@ -42,7 +42,7 @@ module SendCloud
 
     def self.send(template, phone, vars)
       signature = sign(template, phone, vars)
-      response = RestClient.post 'http://sendcloud.sohu.com/smsapi/send?',
+      response = RestClient.post 'https://api.sendcloud.net/smsapi/send?',
                                  smsUser: @user,
                                  templateId: template,
                                  msgType: 0,
@@ -54,7 +54,7 @@ module SendCloud
 
     def self.send_voice(phone, code)
       signature = sign_voice(phone, code)
-      response = RestClient.post 'http://sendcloud.sohu.com/smsapi/sendVoice?',
+      response = RestClient.post 'https://api.sendcloud.net/smsapi/sendVoice?',
                                  smsUser: @user,
                                  phone: phone,
                                  code: code,
